@@ -27,6 +27,7 @@ export function Modal({ onClose }: IModalProps) {
     console.log({ dados });
 
     await api.post("/events", dados);
+    onClose();
   }
 
   return (
@@ -64,7 +65,7 @@ export function Modal({ onClose }: IModalProps) {
           <div className="form-control">
             <label htmlFor="">Horário</label>
             <input
-              type="text"
+              type="time"
               placeholder="Horário do Evento"
               value={hora}
               onChange={(e) => setHora(e.target.value)}
@@ -72,6 +73,7 @@ export function Modal({ onClose }: IModalProps) {
           </div>
 
           <button type="submit">Enviar</button>
+
           <button type="button" className="react-modal-close" onClick={onClose}>
             <img src={closeImg} alt="Fechar" />
           </button>
